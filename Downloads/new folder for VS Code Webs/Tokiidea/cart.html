@@ -35,7 +35,7 @@
                 Total: €0.00
             </div>
             <div style="text-align: center; margin-top: var(--spacing-lg);">
-                <button id="checkout-button" style="background-color: #E6CBF6; color: var(--neutral-dark); border: none; padding: 0.75rem 2rem; font-size: 1.1rem; font-weight: 600; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">
+                <button id="checkout-button" hidden style="background-color: #E6CBF6; color: var(--neutral-dark); border: none; padding: 0.75rem 2rem; font-size: 1.1rem; font-weight: 600; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">
                     Checkout
                 </button>
                 <div style="margin-top: 0.5rem;">
@@ -104,6 +104,8 @@
             const cart = getCart();
             const cartItemsContainer = document.getElementById('cart-items');
             const totalContainer = document.getElementById('cart-total');
+            const checkoutButton = document.getElementById('checkout-button');
+            checkoutButton.hidden = cart.length === 0;
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p style="text-align: center; color: var(--neutral-dark);">Your cart is empty.</p>';
@@ -196,7 +198,6 @@
                 updateCartCount();
             }
 
-            const checkoutButton = document.getElementById('checkout-button');
             checkoutButton.addEventListener('click', async () => {
                 const cart = getCart();
                 updateCartCount();
