@@ -214,7 +214,7 @@ header {
 }
 
 .language-toggle-current,
-.language-toggle-soon {
+.language-toggle-link {
   display: inline-block;
   padding: 0.25rem 0;
   border: 0;
@@ -237,10 +237,10 @@ header {
   font-size: 0.7rem;
 }
 
-.language-toggle-soon {
+.language-toggle-link {
   background: transparent;
   color: rgba(64, 56, 67, 0.65);
-  cursor: not-allowed;
+  cursor: pointer;
 }
 
 .cart-basket:hover {

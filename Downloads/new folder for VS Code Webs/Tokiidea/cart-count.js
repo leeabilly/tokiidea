@@ -9,6 +9,7 @@ function updateCartCount() {
   const cartCount = document.querySelector('.cart-count');
   const cartBasket = document.querySelector('.cart-basket');
   if (!cartCount || !cartBasket) return;
+  const isSlovenian = document.documentElement.lang === 'sl';
 
   let cart;
   try {
@@ -30,5 +31,10 @@ function updateCartCount() {
 
   cartCount.textContent = count;
   cartCount.style.display = count > 0 ? 'flex' : 'none';
-  cartBasket.setAttribute('aria-label', `Cart, ${count} ${count === 1 ? 'item' : 'items'}`);
+  if (isSlovenian) {
+    const itemLabel = count === 1 ? 'izdelek' : count >= 2 && count <= 4 ? 'izdelki' : 'izdelkov';
+    cartBasket.setAttribute('aria-label', `Košarica, ${count} ${itemLabel}`);
+  } else {
+    cartBasket.setAttribute('aria-label', `Cart, ${count} ${count === 1 ? 'item' : 'items'}`);
+  }
 }

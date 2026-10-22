@@ -38,6 +38,7 @@
                     <li>Payment information (securely processed by Stripe - we don't store card details)</li>
                     <li>Email address if you subscribe to updates</li>
                 </ul>
+                <p><strong>Language Selection</strong>: When the site is served through Netlify, its edge service uses a country code inferred from your IP address to show Slovenian to visitors in Slovenia by default. It does not determine your precise location. If you choose a language manually, the site stores that preference in a necessary cookie for up to one year.</p>
                 <p><strong>How We Use It</strong>:</p>
                 <ul>
                     <li>To process and ship your order</li>
@@ -83,8 +84,9 @@
             </div>
         </div>
     </footer>
-    <script src="cart-count.js"></script>
-    <script src="cookie-notice.js"></script>
+    <script src="cart-count.js?v=2"></script>
+    <script src="cookie-notice.js?v=2"></script>
     <script src="bubble-cursor.js"></script>
+    <script src="language.js"></script>
 </body>
 </html>

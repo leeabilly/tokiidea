@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pravilnik o zasebnosti – Tokiidea</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="../images+logo/tokiidea prof pic 2.jpg" alt="Tokiidea logo" style="height: 64px;"></a>
+        </div>
+        <a href="cart.html" class="cart-basket" aria-label="Košarica">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 10V8c0-4.5 8-4.5 8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M4 9.5c4.8 1.5 11.2 1.5 16 0M4.8 10.2c.6 5.4 3.1 8.8 7.2 8.8s6.6-3.4 7.2-8.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.8 13.5c3.9 1 8.5 1 12.4 0M7.4 16.3c2.9.7 6.3.7 9.2 0" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="m9.5 10.5.8 8m3.4-8-.8 8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+            </svg>
+            <span class="cart-count" aria-live="polite"></span>
+        </a>
+    </header>
+    <!-- Image Slider -->
+    <section class="image-slider"></section>
+
+    <!-- Privacy Policy Section -->
+    <section class="section" id="privacy">
+        <div class="container">
+            <h2 class="section-title">Pravilnik o zasebnosti</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p><strong>Katere podatke zbiramo</strong>:</p>
+                <ul>
+                    <li>Podatke o naročilu (ime, naslov, e-pošta, telefon) za obdelavo naročila</li>
+                    <li>Podatke o plačilu (varno jih obdela Stripe; podatkov o kartici ne shranjujemo)</li>
+                    <li>E-poštni naslov, če se naročite na obvestila</li>
+                </ul>
+                <p><strong>Izbira jezika</strong>: Ko spletno mesto streže Netlify, njegova robna storitev uporabi kodo države, določeno na podlagi vašega naslova IP, da obiskovalcem v Sloveniji privzeto prikaže slovensko različico. Natančne lokacije ne določa. Če jezik izberete ročno, spletno mesto za največ eno leto shrani vašo izbiro v nujnem piškotku.</p>
+                <p><strong>Kako jih uporabljamo</strong>:</p>
+                <ul>
+                    <li>Za obdelavo in pošiljanje vašega naročila</li>
+                    <li>Za obveščanje o stanju naročila</li>
+                    <li>Za občasna obvestila o novih plišastih igračah (samo če se na njih naročite)</li>
+                </ul>
+                <p><strong>Posredovanje podatkov</strong>:</p>
+                <ul>
+                    <li>Prevoznikom posredujemo samo podatke, ki jih potrebujejo za dostavo paketa</li>
+                    <li>Vaših osebnih podatkov nikoli ne prodajamo ali dajemo v najem</li>
+                </ul>
+                <p><strong>Vaše pravice</strong>: Če želite dostopati do svojih osebnih podatkov, jih popraviti ali izbrisati, nas kontaktirajte.</p>
+                <p style="margin-top: var(--spacing-lg); font-size: 0.9rem; color: var(--neutral-medium);">
+                    Imate vprašanje? Pošljite goloba pismonošo ali nam pišite – z veseljem pomagamo!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Informacije</h3>
+                <ul>
+                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="faq.html">Pogosta vprašanja</a></li>
+                    <li><a href="shipping.html">Dostava</a></li>
+                    <li><a href="returns.html">Vračila</a></li>
+                    <li><a href="privacy.html">Zasebnost</a></li>
+                    <li><a href="terms.html">Pogoji</a></li>
+                    <li><a href="cookies.html">Piškotki</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; Tokiidea. Vse pravice pridržane. | Ustvarjeno za ljubitelje ročnih izdelkov</p>
+            <div class="language-toggle" role="group" aria-label="Language">
+                <span class="language-toggle-current" lang="en" aria-current="true">EN</span>
+                <span class="language-toggle-divider" aria-hidden="true">·</span>
+                <button class="language-toggle-soon" type="button" lang="sl" disabled title="Slovenian translation coming soon">SL</button>
+            </div>
+        </div>
+    </footer>
+    <script src="../cart-count.js?v=2"></script>
+    <script src="../cookie-notice.js?v=2"></script>
+    <script src="../bubble-cursor.js"></script>
+    <script src="../language.js"></script>
+</body>
+</html>
