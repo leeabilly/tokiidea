@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tokiidea - Handmade Plushies</title>
+    <script>
+        if (new URLSearchParams(window.location.search).has('phone-preview')) {
+            document.documentElement.classList.add('phone-preview');
+        }
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
@@ -12,57 +17,185 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo"><img src="images+logo/tokiidea prof pic 2.jpg" alt="Tokiidea logo" style="height: 48px;"></a>
+            <a href="index.html" class="logo logo-slide-in">
+                <img src="images+logo/tokiidea prof pic 2.jpg" alt="Tokiidea logo" style="height: 80px;">
+                <span class="logo-bubble logo-bubble-one" aria-hidden="true"></span>
+                <span class="logo-bubble logo-bubble-two" aria-hidden="true"></span>
+                <span class="logo-bubble logo-bubble-three" aria-hidden="true"></span>
+                <span class="logo-bubble logo-bubble-four" aria-hidden="true"></span>
+                <span class="logo-bubble logo-bubble-five" aria-hidden="true"></span>
+                <span class="logo-bubble logo-bubble-six" aria-hidden="true"></span>
+            </a>
         </div>
-        <a href="#" class="shopping-bag" aria-label="Shopping Bag">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 4C6 3.44772 6.44772 3 7 3H10L12 1H14L16 3H17C17.5523 3 18 3.44772 18 4V6H20C20.5523 6 21 6.44772 21 7V9H22C22.5523 9 23 9.44772 23 10V18C23 18.5523 22.5523 19 22 19H7C6.44772 19 6 18.5523 6 18V4ZM7 5C7 4.44772 7.44772 4 8 4H16C16.5523 4 17 4.44772 17 5V6H7V5ZM9 10V17H10V10H9ZM14 10V17H15V10H14Z" fill="currentColor"/>
+        <a href="cart.html" class="cart-basket" aria-label="Cart">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 10V8c0-4.5 8-4.5 8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M4 9.5c4.8 1.5 11.2 1.5 16 0M4.8 10.2c.6 5.4 3.1 8.8 7.2 8.8s6.6-3.4 7.2-8.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.8 13.5c3.9 1 8.5 1 12.4 0M7.4 16.3c2.9.7 6.3.7 9.2 0" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
             </svg>
+            <span class="cart-count">0</span>
         </a>
     </header>
 
     <!-- Image Slider -->
-    <section class="image-slider"></section>
+    <section class="image-slider home-banner" aria-label="Tokiidea fish and making photos">
+        <div class="banner-frame">
+            <img class="banner-slide is-active" src="images+logo/fish banner website.jpeg" alt="Kori plushies and sewing in progress beside the aquarium">
+            <img class="banner-slide" src="images+logo/aquari.jpeg" alt="A planted aquarium with tropical fish">
+            <a class="banner-product-tag is-visible" href="product.html" aria-label="Shop Kori for €30.00">
+                <span>Kori</span>
+                <span>€30.00</span>
+            </a>
+        </div>
+        <div class="banner-controls" role="group" aria-label="Banner image controls">
+            <button class="banner-arrow" type="button" aria-label="Show previous banner image">&larr;</button>
+            <div class="banner-dots">
+                <button class="banner-dot is-active" type="button" aria-label="Show sewing image" aria-current="true"></button>
+                <button class="banner-dot" type="button" aria-label="Show aquarium image" aria-current="false"></button>
+            </div>
+            <button class="banner-arrow" type="button" aria-label="Show next banner image">&rarr;</button>
+        </div>
+    </section>
 
     <!-- Products Section -->
     <section class="section" id="shop">
         <div class="container">
-            <h2 class="section-title">Plushies</h2>
+            <h2 class="section-title">Collection</h2>
             <div class="products-grid">
-                <!-- Product Card Example - User will duplicate this for each product -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <!-- Replace with actual product image -->
-                        <div style="width: 100px; height: 100px; background: var(--pastel-blue); border-radius: 50%;">
+                <a class="home-product-link" href="product.html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="product-card home-product-card" style="text-align: center;">
+                        <div class="product-image">
+                            <img src="images+logo/tokiiidea slikica za web.jpg" alt="Kori">
+                            <div class="hover-button" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(230, 179, 170, 0.8); color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.9rem; cursor: pointer; opacity: 0; transition: opacity 0.3s ease;">
+                                view Kori
+                            </div>
+                        </div>
+                        <div class="product-price-tag">
+                            <span>Kori</span>
+                            <span class="collection-price">€30.00</span>
                         </div>
                     </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Lotus Dream Plushie</h3>
-                        <p class="product-price">$45.00</p>
-                        <span class="product-badge">Handmade • Limited Edition</span>
-                        <br><br>
-                        <a href="product.html" class="cta-button">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Add more product cards here as you create them -->
-                <!-- Example structure for additional products:
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/product2.jpg" alt="Product Name">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$XX.XX</p>
-                        <span class="product-badge">Handmade • [Any badges]</span>
-                        <br><br>
-                        <a href="product2.html" class="cta-button">View Details</a>
-                    </div>
-                </div>
-                -->
+                </a>
             </div>
         </div>
     </section>
+
+    <script>
+        // Randomize product image on homepage and store selection for product page
+        document.addEventListener('DOMContentLoaded', function() {
+            const productImage = document.querySelector('#shop .products-grid img');
+            if (productImage) {
+                const images = [
+                    'images+logo/tokiiidea slikica za web.jpg',
+                    'images+logo/web 2.jpg',
+                    'images+logo/web 3.jpg',
+                    'images+logo/web 4.jpg'
+                ];
+                const randomIndex = Math.floor(Math.random() * images.length);
+                // Store the selected index in localStorage for product page to use
+                localStorage.setItem('selectedKoriImageIndex', randomIndex);
+                productImage.src = images[randomIndex];
+                productImage.alt = 'Kori';
+            }
+
+            const bannerSlides = Array.from(document.querySelectorAll('.banner-slide'));
+            const bannerDots = Array.from(document.querySelectorAll('.banner-dot'));
+            const bannerArrows = Array.from(document.querySelectorAll('.banner-arrow'));
+            if (bannerSlides.length > 1) {
+                let activeBannerIndex = 0;
+                const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                let bannerTimer;
+
+                function showBanner(index) {
+                    activeBannerIndex = (index + bannerSlides.length) % bannerSlides.length;
+                    bannerSlides.forEach((slide, slideIndex) => {
+                        slide.classList.toggle('is-active', slideIndex === activeBannerIndex);
+                    });
+                    const bannerProductTag = document.querySelector('.banner-product-tag');
+                    if (bannerProductTag) {
+                        const isVisible = activeBannerIndex === 0;
+                        bannerProductTag.classList.toggle('is-visible', isVisible);
+                        bannerProductTag.tabIndex = isVisible ? 0 : -1;
+                    }
+                    bannerDots.forEach((dot, dotIndex) => {
+                        const isActive = dotIndex === activeBannerIndex;
+                        dot.classList.toggle('is-active', isActive);
+                        dot.setAttribute('aria-current', String(isActive));
+                    });
+                }
+
+                function startBannerTimer() {
+                    window.clearInterval(bannerTimer);
+                    if (!reducedMotion) {
+                        bannerTimer = window.setInterval(() => {
+                            showBanner(activeBannerIndex + 1);
+                        }, 6000);
+                    }
+                }
+
+                bannerArrows[0]?.addEventListener('click', () => {
+                    showBanner(activeBannerIndex - 1);
+                    startBannerTimer();
+                });
+                bannerArrows[1]?.addEventListener('click', () => {
+                    showBanner(activeBannerIndex + 1);
+                    startBannerTimer();
+                });
+                bannerDots.forEach((dot, dotIndex) => {
+                    dot.addEventListener('click', () => {
+                        showBanner(dotIndex);
+                        startBannerTimer();
+                    });
+                });
+                startBannerTimer();
+            }
+        });
+    </script>
+    <script>
+        // Cart count update
+        const CART_KEY = 'tkiidea-cart';
+
+        function getCart() {
+            const cart = localStorage.getItem(CART_KEY);
+            return cart ? JSON.parse(cart) : [];
+        }
+
+        function getCartCount() {
+            return getCart().reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        function updateCartCount() {
+            const count = getCartCount();
+            const cartCountEl = document.querySelector('.cart-count');
+            if (cartCountEl) {
+                // Smooth animation: fade out and scale down, then back
+                cartCountEl.classList.add('update');
+                // Update count after a short delay to allow animation to start
+                setTimeout(() => {
+                    cartCountEl.textContent = count;
+                }, 50);
+                // Remove update class after animation ends
+                setTimeout(() => {
+                    cartCountEl.classList.remove('update');
+                }, 300);
+                // Hide if zero
+                if (count === 0) {
+                    cartCountEl.style.display = 'none';
+                } else {
+                    cartCountEl.style.display = 'flex';
+                }
+            }
+        }
+
+        // Update on load
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+        // Update when cart changes in another tab
+        window.addEventListener('storage', (e) => {
+            if (e.key === CART_KEY) {
+                updateCartCount();
+            }
+        });
+    </script>
 
     <!-- Footer -->
     <footer>
@@ -82,8 +215,17 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Tokiidea. All rights reserved. | Made with  for handmade lovers</p>
+            <p>© Tokiidea I Derpy by design.</p>
+            <div class="language-toggle" role="group" aria-label="Language">
+                <span class="language-toggle-current" lang="en" aria-current="true">EN</span>
+                <span class="language-toggle-divider" aria-hidden="true">·</span>
+                <button class="language-toggle-soon" type="button" lang="sl" disabled title="Slovenian translation coming soon">SL</button>
+            </div>
         </div>
     </footer>
+    <script src="cart-count.js"></script>
+    <script src="page-transition.js"></script>
+    <script src="cookie-notice.js"></script>
+    <script src="bubble-cursor.js"></script>
 </body>
 </html>
