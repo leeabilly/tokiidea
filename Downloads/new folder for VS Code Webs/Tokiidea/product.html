@@ -6,116 +6,105 @@
     <title>Kori - Tokiidea</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://js.stripe.com/v3/"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoku:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo"><img src="images+logo/tokiidea prof pic 2.jpg" alt="Tokiidea logo" style="height: 48px;"></a>
+            <a href="index.html" class="logo"><img src="images+logo/tokiidea prof pic 2.jpg" alt="Tokiidea logo" style="height: 80px;"></a>
         </div>
-        <a href="#" class="shopping-bag" aria-label="Shopping Bag">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 4C6 3.44772 6.44772 3 7 3H10L12 1H14L16 3H17C17.5523 3 18 3.44772 18 4V6H20C20.5523 6 21 6.44772 21 7V9H22C22.5523 9 23 9.44772 23 10V18C23 18.5523 22.5523 19 22 19H7C6.44772 19 6 18.5523 6 18V4ZM7 5C7 4.44772 7.44772 4 8 4H16C16.5523 4 17 4.44772 17 5V6H7V5ZM9 10V17H10V10H9ZM14 10V17H15V10H14Z" fill="currentColor"/>
+        <a href="cart.html" class="cart-basket" aria-label="Cart">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 10V8c0-4.5 8-4.5 8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M4 9.5c4.8 1.5 11.2 1.5 16 0M4.8 10.2c.6 5.4 3.1 8.8 7.2 8.8s6.6-3.4 7.2-8.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.8 13.5c3.9 1 8.5 1 12.4 0M7.4 16.3c2.9.7 6.3.7 9.2 0" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="m9.5 10.5.8 8m3.4-8-.8 8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
             </svg>
+            <span class="cart-count">0</span>
         </a>
     </header>
-    <!-- Image Slider -->
-    <section class="image-slider"></section>
 
     <!-- Product Detail -->
     <section class="section" style="padding: var(--spacing-xl) 0 min(var(--spacing-xl), 3rem);">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); align-items: start;">
+            <a class="product-back-link" href="index.html">← Back to shop</a>
+            <div class="product-layout">
                 <!-- Product Images -->
                 <div>
-                    <div class="product-image" style="height: 500px; background-color: var(--neutral-light); margin-bottom: var(--spacing-md);">
+                    <div class="product-image" style="height: 500px; margin-bottom: var(--spacing-md); background: transparent; position: relative;">
                         <!-- Main product image -->
-                        <img src="images+logo/slicica 2 za tokii.jpg" alt="Kori" style="width:100%;height:100%;object-fit:contain;">
+                        <img id="main-product-image" alt="Kori" style="width:100%;height:100%;object-fit:contain; transition: opacity 0.3s ease;">
+                        <script>
+                            const initialKoriImages = [
+                                'images+logo/tokiiidea slikica za web.jpg',
+                                'images+logo/web 2.jpg',
+                                'images+logo/web 3.jpg',
+                                'images+logo/web 4.jpg'
+                            ];
+                            const storedKoriImageIndex = Number.parseInt(localStorage.getItem('selectedKoriImageIndex') || '0', 10);
+                            window.initialKoriImageIndex = Number.isInteger(storedKoriImageIndex) && storedKoriImageIndex >= 0 && storedKoriImageIndex < initialKoriImages.length
+                                ? storedKoriImageIndex
+                                : 0;
+                            const initialKoriImage = document.getElementById('main-product-image');
+                            initialKoriImage.src = initialKoriImages[window.initialKoriImageIndex];
+                            initialKoriImage.alt = `Kori image ${window.initialKoriImageIndex + 1}`;
+                        </script>
+                        <!-- Navigation arrows -->
+                        <button id="prev-button" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.2); color: rgba(255,255,255,0.7); border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; z-index: 10; opacity: 0.6; transition: all 0.2s ease;" onmouseover="this.style.opacity='1'; this.style.background='rgba(0,0,0,0.3)';" onmouseout="this.style.opacity='0.6'; this.style.background='rgba(0,0,0,0.2)'">&#9664;</button>
+                        <button id="next-button" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.2); color: rgba(255,255,255,0.7); border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; z-index: 10; opacity: 0.6; transition: all 0.2s ease;" onmouseover="this.style.opacity='1'; this.style.background='rgba(0,0,0,0.3)';" onmouseout="this.style.opacity='0.6'; this.style.background='rgba(0,0,0,0.2)'">&#9654;</button>
                     </div>
 
-                    <!-- Thumbnails (optional) -->
-                    <div style="display: flex; gap: var(--spacing-sm); justify-content: center;">
-                        <div style="width: 60px; height: 60px; background: var(--neutral-light); border-radius: var(--radius-sm);"></div>
-                        <div style="width: 60px; height: 60px; background: var(--neutral-light); border-radius: var(--radius-sm);"></div>
-                        <div style="width: 60px; height: 60px; background: var(--neutral-light); border-radius: var(--radius-sm);"></div>
-                    </div>
                 </div>
 
                 <!-- Product Info -->
                 <div>
-                    <h1 class="product-title">Kori</h1>
+                    <h1 class="product-title" style="font-size: 3.5rem; text-align: center; margin-bottom: 1rem;">Kori</h1>
 
-                    <div class="product-price">$45.00</div>
-                    <h2 style="text-align:center; margin:2rem 0 1.5rem;">Buy Now – Kori Plushie</h2>
-                    <form id="payment-form">
-                        <div id="stripe-checkout-container" style="margin: 2rem 0; max-width: 420px; width: 100%;"></div>
-                    </form>
+                    <div class="product-price" style="text-align: center; font-size: 2.2rem; color: #E6CBF6; margin-bottom: 1.5rem; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.3);">€30.00</div>
 
-                    <div class="product-badge" style="background: var(--pastel-blue); display: inline-block; margin: var(--spacing-sm) 0; padding: var(--spacing-xs) var(--spacing-sm);">
-                        Handmade • Limited Edition • Made to Order
+                    <div style="margin: 0.5rem 0; text-align: center;">
+                        <button class="product-add-button" onclick="addToCartButtonClicked()">
+                            Add to cart
+                        </button>
                     </div>
 
                     <div style="margin: var(--spacing-lg) 0;">
-                        <h3>About This Plushie</h3>
-                        <p>Each Kori plushie is carefully handmade with ultra-soft polyester filling and premium plush fabric. Inspired by natural beauty, this cuddly companion features soft textures and a gentle, comforting presence perfect for both play and display.</p>
+                        <p style="max-width: 600px; margin: 0 0 1.5rem 0; line-height: 1.7; color: var(--neutral-dark);">
+                            Meet your new tank mate! Inspired by the adorable Corydoras catfish, this is a handmade plushie, stitched with love to keep you company.
+                        </p>
 
-                        <h3>Details</h3>
-                        <ul style="list-style: none; padding-left: 0;">
-                            <li>• Height: approximately 10 inches (25 cm)</li>
-                            <li>• Materials: Hypoallergenic plush exterior, soft polyester filling</li>
-                            <li>• Care: Surface washable, air dry</li>
-                            <li>• Made in: [Your Location]</li>
-                            <li>• Processing time: 3-5 business days before shipping</li>
-                        </ul>
+                        <button id="toggle-details" class="details-toggle" type="button" aria-expanded="false" aria-controls="details-content">
+                            View details
+                        </button>
+
+                        <div id="details-content" class="product-details" hidden>
+                            <ul style="list-style: none; padding-left: 0; color: var(--neutral-dark);">
+                                <li>Dimensions: length ~25 cm, height ~15 cm, width ~12 cm</li>
+                                <li>Materials: soft polyester plush exterior and filling</li>
+                                <li>Made in Slovenia</li>
+                            </ul>
+                            <p style="margin-top: 1rem; color: var(--neutral-dark); font-size: 1rem;">
+                                *please note that handmade items vary slightly, making every Kori one-of-a-kind
+                            </p>
+                        </div>
                     </div>
 
-                    <button class="cta-button" style="width: 100%; max-width: 300px;">
-                        Add to Cart - $45.00
-                    </button>
-
-                    <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--neutral-medium);">
-                        Free shipping on orders over $75
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Related Products -->
-    <section class="section">
+    <section class="making-story section" aria-labelledby="making-story-title">
         <div class="container">
-            <h2 class="section-title">You Might Also Like</h2>
-            <div class="products-grid">
-                <!-- Related product card 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div style="width: 100px; height: 100px; background: var(--pastel-green); border-radius: 50%;">
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Related Product 1</h3>
-                        <p class="product-price">$XX.XX</p>
-                        <span class="product-badge">Handmade • [Any badges]</span>
-                        <br><br>
-                        <a href="#" class="cta-button">View Details</a>
-                    </div>
-                </div>
-                <!-- Related product card 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div style="width: 100px; height: 100px; background: var(--pastel-lavender); border-radius: 50%;">
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Related Product 2</h3>
-                        <p class="product-price">$XX.XX</p>
-                        <span class="product-badge">Handmade • [Any badges]</span>
-                        <br><br>
-                        <a href="#" class="cta-button">View Details</a>
-                    </div>
-                </div>
+            <div class="making-story-card">
+                <h2 id="making-story-title">How Kori is made</h2>
+                <ol class="making-steps">
+                    <li>I sew Kori's mouth, tail and fin separately, ready to add them later.</li>
+                    <li>Then I cut the fabric for Kori's head, back and belly, and sew the head and back together.</li>
+                    <li>I add the eyes, mouth and fin, sew on the belly, then turn the plushie right side out.</li>
+                    <li>I fill the plushie and hand-stitch the tail closed.</li>
+                </ol>
             </div>
         </div>
     </section>
@@ -138,72 +127,164 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Tokiidea. All rights reserved. | Made with  for handmade lovers</p>
+            <p>© Tokiidea I Derpy by design.</p>
+            <div class="language-toggle" role="group" aria-label="Language">
+                <span class="language-toggle-current" lang="en" aria-current="true">EN</span>
+                <span class="language-toggle-divider" aria-hidden="true">·</span>
+                <button class="language-toggle-soon" type="button" lang="sl" disabled title="Slovenian translation coming soon">SL</button>
+            </div>
         </div>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Stripe
-            const stripe = Stripe('pk_test_51JPNosJAOBREUPrpDdDyxZn9u0G9HDdPR1Z6vLJ8ZqNr5yZrQY6y7t8R9u0V1W2X3Y4Z5a6b7c8d9e0f1g2h3i4j5k6l7m8n9o0p'); // Replace with your publishable key
+            // Image navigation functionality
+            const mainImage = document.getElementById('main-product-image');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
 
-            // Fetch client secret from Netlify function
-            fetch('/.netlify/functions/create-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ priceId: 'price_1URSsGJAOBREUPrpqWNEjICo' })
-            })
-            .then(response => response.json())
-            .then(session => {
-                // Initialize payment element
-                const appearance = {
-                    theme: 'stripe',
-                    rules: {
-                        '.Input': {
-                            fontFamily: 'var(--font-body)',
-                        },
-                        '.Input::placeholder': {
-                            color: '#FFFFFF',
-                        },
-                    },
-                    variables: {
-                        colorPrimary: '#ff6b6b',
-                        colorBackground: '#ffffff',
-                        colorBorder: '#e0e0e0',
-                        colorIconHover: '#ff6b6b',
-                    },
-                    fontFamily: 'var(--font-body)',
-                };
+            // List of all images (first 4 match homepage options)
+            const images = [
+                'images+logo/tokiiidea slikica za web.jpg',
+                'images+logo/web 2.jpg',
+                'images+logo/web 3.jpg',
+                'images+logo/web 4.jpg',
+                'images+logo/web 5.jpg'
+            ];
 
-                const elements = stripe.elements({ appearance, clientSecret: session.client_secret });
-                const paymentElement = elements.create('payment');
-                paymentElement.mount('#stripe-checkout-container');
+            // Get stored image index from homepage, or default to 0
+            let currentImageIndex = window.initialKoriImageIndex;
 
-                // Handle form submission
-                const form = document.getElementById('payment-form');
-                form.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const { error } = await stripe.confirmPayment({
-                        elements,
-                        confirmParams: {
-                            return_url: window.location.href,
-                        }
-                    });
+            // Function to update the main image with fade effect
+            function updateMainImage(index) {
+                // Ensure index is within bounds
+                if (index < 0) {
+                    currentImageIndex = images.length - 1;
+                } else if (index >= images.length) {
+                    currentImageIndex = 0;
+                } else {
+                    currentImageIndex = index;
+                }
 
-                    if (error) {
-                        // Show error to customer
-                        console.error(error.message);
-                    } else {
-                        // Redirect to success page
-                        window.location.href = 'success.html';
-                    }
-                });
-            })
-            .catch(error => {
-                console.error('Error:', error);
+                // Fade out
+                mainImage.style.opacity = '0';
+
+                // Wait for fade out, then change image
+                setTimeout(() => {
+                    mainImage.src = images[currentImageIndex];
+                    mainImage.alt = `Kori image ${currentImageIndex + 1}`;
+
+                    // Wait for image to load, then fade in
+                    mainImage.onload = () => {
+                        mainImage.style.opacity = '1';
+                    };
+                }, 300); // Matches the CSS transition duration
+            }
+
+            // Event listeners for navigation buttons
+            prevButton.addEventListener('click', () => {
+                updateMainImage(currentImageIndex - 1);
+            });
+
+            nextButton.addEventListener('click', () => {
+                updateMainImage(currentImageIndex + 1);
+            });
+
+            // Details toggle functionality
+            const toggleButton = document.getElementById('toggle-details');
+            const detailsContent = document.getElementById('details-content');
+
+            toggleButton.addEventListener('click', () => {
+                const isHidden = detailsContent.hidden;
+                detailsContent.hidden = !isHidden;
+                toggleButton.setAttribute('aria-expanded', String(isHidden));
+                toggleButton.textContent = isHidden ? 'Hide details' : 'View details';
             });
         });
     </script>
+    <script>
+        // Cart functionality
+        const CART_KEY = 'tkiidea-cart';
+        const KORI_PRICE_ID = 'price_1US03SJfdUDEvboQVUiWeloT';
+
+        function getCart() {
+            const cart = localStorage.getItem(CART_KEY);
+            return cart
+                ? JSON.parse(cart).map(item => item.name === 'Kori'
+                    ? { ...item, priceId: KORI_PRICE_ID, price: 3000 }
+                    : item)
+                : [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        }
+
+        function addToCart(item) {
+            const cart = getCart();
+            const existing = cart.find(i => i.priceId === item.priceId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+            saveCart(cart);
+            updateCartCount();
+        }
+
+        function getCartCount() {
+            return getCart().reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        function updateCartCount() {
+            const count = getCartCount();
+            const cartCountEl = document.querySelector('.cart-count');
+            if (cartCountEl) {
+                // Smooth animation: fade out and scale down, then back
+                cartCountEl.classList.add('update');
+                // Update count after a short delay to allow animation to start
+                setTimeout(() => {
+                    cartCountEl.textContent = count;
+                }, 50);
+                // Remove update class after animation ends
+                setTimeout(() => {
+                    cartCountEl.classList.remove('update');
+                }, 300);
+                // Hide if zero
+                if (count === 0) {
+                    cartCountEl.style.display = 'none';
+                } else {
+                    cartCountEl.style.display = 'flex';
+                }
+            }
+        }
+
+        function addToCartButtonClicked() {
+            // Read price from the product page
+            const priceEl = document.querySelector('.product-price');
+            let priceText = '0';
+            if (priceEl) {
+                priceText = priceEl.textContent.trim();
+            }
+            // Remove currency symbols and commas, convert to float
+            const numeric = parseFloat(priceText.replace(/[^0-9.,]/g, '').replace(',', '.'));
+            const priceInCents = Math.round(numeric * 100); // ensure integer cents
+
+            const item = {
+                priceId: 'price_1US03SJfdUDEvboQVUiWeloT',
+                name: 'Kori', // could also read from .product-title if desired
+                price: priceInCents
+            };
+            addToCart(item);
+        }
+
+        // Initialize cart count on load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+        });
+    </script>
+    <script src="cart-count.js"></script>
+    <script src="page-transition.js"></script>
+    <script src="cookie-notice.js"></script>
+    <script src="bubble-cursor.js"></script>
 </body>
 </html>

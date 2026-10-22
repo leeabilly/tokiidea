@@ -12,12 +12,16 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo"><img src="images+logo/tokiidea prof pic 2.jpg" alt="Tokiidea logo" style="height: 48px;"></a>
+            <a href="index.html" class="logo"><img src="images+logo/tokiidea prof pic 2.jpg" alt="Tokiidea logo" style="height: 64px;"></a>
         </div>
-        <a href="#" class="shopping-bag" aria-label="Shopping Bag">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 4C6 3.44772 6.44772 3 7 3H10L12 1H14L16 3H17C17.5523 3 18 3.44772 18 4V6H20C20.5523 6 21 6.44772 21 7V9H22C22.5523 9 23 9.44772 23 10V18C23 18.5523 22.5523 19 22 19H7C6.44772 19 6 18.5523 6 18V4ZM7 5C7 4.44772 7.44772 4 8 4H16C16.5523 4 17 4.44772 17 5V6H7V5ZM9 10V17H10V10H9ZM14 10V17H15V10H14Z" fill="currentColor"/>
+        <a href="cart.html" class="cart-basket" aria-label="Cart">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 10V8c0-4.5 8-4.5 8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M4 9.5c4.8 1.5 11.2 1.5 16 0M4.8 10.2c.6 5.4 3.1 8.8 7.2 8.8s6.6-3.4 7.2-8.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.8 13.5c3.9 1 8.5 1 12.4 0M7.4 16.3c2.9.7 6.3.7 9.2 0" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="m9.5 10.5.8 8m3.4-8-.8 8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
             </svg>
+            <span class="cart-count" aria-live="polite"></span>
         </a>
     </header>
     <!-- Image Slider -->
@@ -29,28 +33,28 @@
             <h2 class="section-title">Frequently Asked Questions</h2>
             <div style="max-width: 800px; margin: 0 auto;">
                 <div class="faq-item">
-                    <h3>How long does it take to receive my plushie?</h3>
-                    <p>Each plushie is made to order, so please allow 3-5 business days for creation before shipping. Shipping times vary by location (see our <a href="shipping.html">Shipping Policy</a> for details).</p>
+                    <h3>How long will my order take?</h3>
+                    <p>Please allow around 5 business days for your plushie to be made, followed by approximately 3-5 business days for shipping within Slovenia with Pošta Slovenije. These are estimates; see our <a href="shipping.html">Shipping Policy</a>.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Can I wash my plushie?</h3>
-                    <p>Our plushies are surface washable. We recommend spot cleaning with a mild detergent and air drying. Avoid submerging in water or machine washing to preserve the quality.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Do you accept custom orders?</h3>
-                    <p>Yes! We love creating custom plushies. Please contact us via the <a href="contact.html">Contact</a> page with your ideas, and we'll discuss feasibility, pricing, and timeline.</p>
+                    <h3>How should I clean my plushie?</h3>
+                    <p>Gently surface-clean your plushie with mild detergent and let it air dry. Do not machine wash it.</p>
                 </div>
                 <div class="faq-item">
                     <h3>What materials do you use?</h3>
-                    <p>We use hypoallergenic plush exterior fabrics and soft polyester filling. All materials are chosen for softness, durability, and safety.</p>
+                    <p>Our plushies have a soft polyester plush exterior and polyester filling.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Do you ship internationally?</h3>
-                    <p>Yes, we ship worldwide! International shipping times and costs vary. Please note that customers are responsible for any customs/duties fees imposed by their country.</p>
+                    <h3>Where do you ship?</h3>
+                    <p>Online checkout is currently available for addresses in Slovenia only. If you are elsewhere, please <a href="contact.html">contact us directly</a> to ask about shipping to your location.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How much is shipping?</h3>
+                    <p>Standard shipping within Slovenia is €3.50 per order.</p>
                 </div>
                 <div class="faq-item">
                     <h3>What is your return policy?</h3>
-                    <p>As made-to-order items, we cannot accept returns for change of mind. However, if your plushie arrives damaged, please contact us within 3 days with photos for a replacement or refund. See our <a href="returns.html">Returns & Refunds Policy</a> for full details.</p>
+                    <p>If your plushie arrives damaged, contact us within 5 days and include photos. See our <a href="returns.html">Returns & Refunds Policy</a> for details.</p>
                 </div>
             </div>
         </div>
@@ -74,8 +78,16 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Tokiidea. All rights reserved. | Made with  for handmade lovers</p>
+            <p>&copy; Tokiidea. All rights reserved. | Made with  for handmade lovers</p>
+            <div class="language-toggle" role="group" aria-label="Language">
+                <span class="language-toggle-current" lang="en" aria-current="true">EN</span>
+                <span class="language-toggle-divider" aria-hidden="true">·</span>
+                <button class="language-toggle-soon" type="button" lang="sl" disabled title="Slovenian translation coming soon">SL</button>
+            </div>
         </div>
     </footer>
+    <script src="cart-count.js"></script>
+    <script src="cookie-notice.js"></script>
+    <script src="bubble-cursor.js"></script>
 </body>
 </html>
