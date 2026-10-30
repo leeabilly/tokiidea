@@ -81,7 +81,7 @@
                 const cart = localStorage.getItem(CART_KEY);
                 return cart
                     ? JSON.parse(cart).map(item => item.name === 'Kori'
-                        ? { ...item, priceId: KORI_PRICE_ID, price: 3000 }
+                        ? { ...item, priceId: KORI_PRICE_ID, price: 3300 }
                         : item)
                     : [];
             }

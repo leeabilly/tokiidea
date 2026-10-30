@@ -62,7 +62,7 @@
                 <div>
                     <h1 class="product-title" style="font-size: 3.5rem; text-align: center; margin-bottom: 1rem;">Kori</h1>
 
-                    <div class="product-price" style="text-align: center; font-size: 2.2rem; color: #E6CBF6; margin-bottom: 1.5rem; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.3);">€30.00</div>
+                    <div class="product-price" style="text-align: center; font-size: 2.2rem; color: #E6CBF6; margin-bottom: 1.5rem; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.3);">€33.00</div>
 
                     <div style="margin: 0.5rem 0; text-align: center;">
                         <button class="product-add-button" onclick="addToCartButtonClicked()">
@@ -211,7 +211,7 @@
             const cart = localStorage.getItem(CART_KEY);
             return cart
                 ? JSON.parse(cart).map(item => item.name === 'Kori'
-                    ? { ...item, priceId: KORI_PRICE_ID, price: 3000 }
+                    ? { ...item, priceId: KORI_PRICE_ID, price: 3300 }
                     : item)
                 : [];
         }
