@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kori - Tokiidea</title>
+    <script src="checkout-config.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoku:wght@400;600&display=swap" rel="stylesheet">
@@ -61,7 +62,7 @@
                 <div>
                     <h1 class="product-title" style="font-size: 3.5rem; text-align: center; margin-bottom: 1rem;">Kori</h1>
 
-                    <div class="product-price" style="text-align: center; font-size: 2.2rem; color: #E6CBF6; margin-bottom: 1.5rem; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.3);">€30.00</div>
+                    <div class="product-price" style="text-align: center; font-size: 2.2rem; color: #E6CBF6; margin-bottom: 1.5rem; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.3);">€33.00</div>
 
                     <div style="margin: 0.5rem 0; text-align: center;">
                         <button class="product-add-button" onclick="addToCartButtonClicked()">
@@ -204,13 +205,13 @@
     <script>
         // Cart functionality
         const CART_KEY = 'tkiidea-cart';
-        const KORI_PRICE_ID = 'price_1US03SJfdUDEvboQVUiWeloT';
+        const KORI_PRICE_ID = window.TOKIIDEA_CHECKOUT.koriPriceId;
 
         function getCart() {
             const cart = localStorage.getItem(CART_KEY);
             return cart
                 ? JSON.parse(cart).map(item => item.name === 'Kori'
-                    ? { ...item, priceId: KORI_PRICE_ID, price: 3000 }
+                    ? { ...item, priceId: KORI_PRICE_ID, price: 3300 }
                     : item)
                 : [];
         }
@@ -270,7 +271,7 @@
             const priceInCents = Math.round(numeric * 100); // ensure integer cents
 
             const item = {
-                priceId: 'price_1US03SJfdUDEvboQVUiWeloT',
+                priceId: KORI_PRICE_ID,
                 name: 'Kori', // could also read from .product-title if desired
                 price: priceInCents
             };
