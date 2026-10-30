@@ -33,26 +33,25 @@
             <h2 class="section-title">Pišite nam</h2>
             <div style="max-width: 600px; margin: 0 auto;">
                 <p>Imate vprašanje, posebno željo ali nas želite samo pozdraviti? Z veseljem vas bomo slišali!</p>
-                <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="margin-top: var(--spacing-lg);">
-                    <input type="hidden" name="form-name" value="contact">
+                <form id="contact-form" style="margin-top: var(--spacing-lg);">
                     <p hidden>
                         <label>To polje pustite prazno: <input name="bot-field"></label>
                     </p>
                     <div style="margin-bottom: var(--spacing-md);">
                         <label for="name" style="display: block; margin-bottom: var(--spacing-xs);">Vaše ime</label>
-                        <input type="text" id="name" name="name" required style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--neutral-light); border-radius: var(--radius-sm); font-family: var(--font-body);">
+                        <input type="text" id="name" name="name" maxlength="120" autocomplete="name" required style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--neutral-light); border-radius: var(--radius-sm); font-family: var(--font-body);">
                     </div>
                     <div style="margin-bottom: var(--spacing-md);">
                         <label for="email" style="display: block; margin-bottom: var(--spacing-xs);">E-poštni naslov</label>
-                        <input type="email" id="email" name="email" required style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--neutral-light); border-radius: var(--radius-sm); font-family: var(--font-body);">
+                        <input type="email" id="email" name="email" maxlength="254" autocomplete="email" required style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--neutral-light); border-radius: var(--radius-sm); font-family: var(--font-body);">
                     </div>
                     <div style="margin-bottom: var(--spacing-md);">
                         <label for="message" style="display: block; margin-bottom: var(--spacing-xs);">Sporočilo</label>
-                        <textarea id="message" name="message" rows="5" required style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--neutral-light); border-radius: var(--radius-sm); font-family: var(--font-body);"></textarea>
+                        <textarea id="message" name="message" rows="5" maxlength="5000" required style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--neutral-light); border-radius: var(--radius-sm); font-family: var(--font-body);"></textarea>
                     </div>
                     <button type="submit" class="cta-button" style="width: 100%; max-width: 300px;">Pošlji sporočilo</button>
                 </form>
-                <p id="form-status" style="margin-top: var(--spacing-md); text-align: center; min-height: 1.5rem;"></p>
+                <p id="form-status" role="status" aria-live="polite" style="margin-top: var(--spacing-md); text-align: center; min-height: 1.5rem;"></p>
             </div>
         </div>
     </section>
@@ -83,6 +82,7 @@
             </div>
         </div>
     </footer>
+    <script src="../contact-form.js"></script>
     <script src="../cart-count.js?v=2"></script>
     <script src="../cookie-notice.js?v=2"></script>
     <script src="../bubble-cursor.js"></script>
