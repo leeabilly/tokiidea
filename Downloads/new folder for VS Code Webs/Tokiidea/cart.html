@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - Tokiidea</title>
+    <script src="checkout-config.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoku:wght@400;600&display=swap" rel="stylesheet">
@@ -75,7 +76,7 @@
         document.addEventListener('DOMContentLoaded', async () => {
             // Cart functions (same as in product.html)
             const CART_KEY = 'tkiidea-cart';
-            const KORI_PRICE_ID = 'price_1US03SJfdUDEvboQVUiWeloT';
+            const KORI_PRICE_ID = window.TOKIIDEA_CHECKOUT.koriPriceId;
             function getCart() {
                 const cart = localStorage.getItem(CART_KEY);
                 return cart
@@ -213,7 +214,7 @@
                 checkoutButton.disabled = true;
                 checkoutButton.textContent = 'Redirecting to secure checkout…';
                 try {
-                    const response = await fetch('/.netlify/functions/create-checkout-session', {
+                    const response = await fetch(window.TOKIIDEA_CHECKOUT.endpoint, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

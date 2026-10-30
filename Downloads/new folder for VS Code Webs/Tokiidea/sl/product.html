@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kori – Tokiidea</title>
+    <script src="../checkout-config.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoku:wght@400;600&display=swap" rel="stylesheet">
@@ -204,7 +205,7 @@
     <script>
         // Cart functionality
         const CART_KEY = 'tkiidea-cart';
-        const KORI_PRICE_ID = 'price_1US03SJfdUDEvboQVUiWeloT';
+        const KORI_PRICE_ID = window.TOKIIDEA_CHECKOUT.koriPriceId;
 
         function getCart() {
             const cart = localStorage.getItem(CART_KEY);
@@ -270,7 +271,7 @@
             const priceInCents = Math.round(numeric * 100); // ensure integer cents
 
             const item = {
-                priceId: 'price_1US03SJfdUDEvboQVUiWeloT',
+                priceId: KORI_PRICE_ID,
                 name: 'Kori', // could also read from .product-title if desired
                 price: priceInCents
             };
