@@ -76,13 +76,12 @@
         document.addEventListener('DOMContentLoaded', async () => {
             // Cart functions (same as in product.html)
             const CART_KEY = 'tkiidea-cart';
-            const KORI_PRICE_ID = window.TOKIIDEA_CHECKOUT.koriPriceId;
             const isSlovenian = document.documentElement.lang === 'sl';
             function getCart() {
                 const cart = localStorage.getItem(CART_KEY);
                 return cart
                     ? JSON.parse(cart).map(item => item.name === 'Kori'
-                        ? { ...item, priceId: KORI_PRICE_ID, price: 3300 }
+                        ? { ...item, productKey: 'kori', price: 3300 }
                         : item)
                     : [];
             }
@@ -211,7 +210,7 @@
                     return;
                 }
                 const line_items = cart.map(item => ({
-                    price: item.priceId,
+                    product: item.productKey,
                     quantity: item.quantity
                 }));
 

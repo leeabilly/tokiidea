@@ -41,12 +41,9 @@ exports.handler = async (event) => {
   }
 
   const secretKey = process.env.STRIPE_SECRET_KEY;
-  const allowedPriceIds = new Set(
-    (process.env.STRIPE_ALLOWED_PRICE_IDS || '')
-      .split(',')
-      .map((priceId) => priceId.trim())
-      .filter(Boolean)
-  );
+  const priceIdsByProduct = new Map([
+    ['kori', process.env.STRIPE_KORI_PRICE_ID],
+  ]);
   const shippingRateId = process.env.STRIPE_SHIPPING_RATE_ID;
 
   if (!secretKey || !/^sk_(test|live)_/.test(secretKey)) {
@@ -54,8 +51,8 @@ exports.handler = async (event) => {
     return jsonResponse(500, { error: 'Checkout is not configured. Please try again later.' }, origin);
   }
 
-  if (allowedPriceIds.size === 0 || !shippingRateId) {
-    console.error('Stripe checkout is unavailable: allowed prices or shipping rate are not configured.');
+  if (!process.env.STRIPE_KORI_PRICE_ID || !shippingRateId) {
+    console.error('Stripe checkout is unavailable: product price or shipping rate is not configured.');
     return jsonResponse(500, { error: 'Checkout is not configured. Please try again later.' }, origin);
   }
 
@@ -70,18 +67,15 @@ exports.handler = async (event) => {
     return jsonResponse(400, { error: 'Invalid cart items.' }, origin);
   }
 
-  const requestedItems = Array.isArray(data.line_items)
-    ? data.line_items
-    : data.priceId
-      ? [{ price: data.priceId, quantity: 1 }]
-      : [];
+  const requestedItems = Array.isArray(data.line_items) ? data.line_items : [];
 
   if (
     requestedItems.length === 0 ||
     requestedItems.some((item) =>
       !item ||
       typeof item !== 'object' ||
-      !allowedPriceIds.has(item.price) ||
+      typeof item.product !== 'string' ||
+      !priceIdsByProduct.has(item.product) ||
       !Number.isInteger(item.quantity) ||
       item.quantity < 1 ||
       item.quantity > 99
@@ -99,8 +93,8 @@ exports.handler = async (event) => {
       'shipping_options[0][shipping_rate]': shippingRateId,
     });
 
-    requestedItems.forEach(({ price, quantity }, index) => {
-      form.set(`line_items[${index}][price]`, price);
+    requestedItems.forEach(({ product, quantity }, index) => {
+      form.set(`line_items[${index}][price]`, priceIdsByProduct.get(product));
       form.set(`line_items[${index}][quantity]`, String(quantity));
     });
 
@@ -117,7 +111,7 @@ exports.handler = async (event) => {
     if (!stripeResponse.ok || !session.url) {
       console.error('Stripe checkout session creation failed:', stripeResponse.status, session.error?.code);
       return jsonResponse(502, {
-        error: 'Stripe could not start checkout. Check the Stripe key, allowed price IDs, and shipping rate configuration.',
+        error: 'Stripe could not start checkout. Check the Stripe key, product price, and shipping rate configuration.',
       }, origin);
     }
 
@@ -125,7 +119,7 @@ exports.handler = async (event) => {
   } catch (err) {
     console.error('Stripe checkout request failed:', err);
     return jsonResponse(500, {
-      error: 'Stripe could not start checkout. Check the Stripe key, allowed price IDs, and shipping rate configuration.',
+      error: 'Stripe could not start checkout. Check the Stripe key, product price, and shipping rate configuration.',
     }, origin);
   }
 };

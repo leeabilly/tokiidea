@@ -205,13 +205,11 @@
     <script>
         // Cart functionality
         const CART_KEY = 'tkiidea-cart';
-        const KORI_PRICE_ID = window.TOKIIDEA_CHECKOUT.koriPriceId;
-
         function getCart() {
             const cart = localStorage.getItem(CART_KEY);
             return cart
                 ? JSON.parse(cart).map(item => item.name === 'Kori'
-                    ? { ...item, priceId: KORI_PRICE_ID, price: 3300 }
+                    ? { ...item, productKey: 'kori', price: 3300 }
                     : item)
                 : [];
         }
@@ -222,7 +220,7 @@
 
         function addToCart(item) {
             const cart = getCart();
-            const existing = cart.find(i => i.priceId === item.priceId);
+            const existing = cart.find(i => i.productKey === item.productKey);
             if (existing) {
                 existing.quantity += 1;
             } else {
@@ -271,7 +269,7 @@
             const priceInCents = Math.round(numeric * 100); // ensure integer cents
 
             const item = {
-                priceId: KORI_PRICE_ID,
+                productKey: 'kori',
                 name: 'Kori', // could also read from .product-title if desired
                 price: priceInCents
             };
