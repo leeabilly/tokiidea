@@ -54,7 +54,7 @@ Since you're just getting started with your handmade plushie business, here are 
 
 ## Customization Tips for Tokiidea:
 1. **Voice**: Keep it warm, friendly, and slightly playful - like you're chatting with a friend who makes cute things
-2. **Brand Touch**: Add a line like "Questions? Send us a carrier pigeon or just email us - we're here to help!" 
+2. **Brand Touch**: Keep support copy warm, friendly, and in line with Tokiidea's voice.
 3. **Specifics**: Replace bracketed info like [your preferred carrier] and [your state/country]
 4. **Length**: These are intentionally concise for a small handmade business - you can expand as you grow
 5. **Legal Note**: For maximum protection, consider consulting a small business lawyer as you scale, but these are great to start with!
