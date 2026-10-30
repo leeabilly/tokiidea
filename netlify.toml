@@ -1,0 +1,10 @@
+[build]
+base = "Downloads/new folder for VS Code Webs/Tokiidea"
+publish = "."
+
+[functions]
+directory = "netlify/functions"
+
+[[edge_functions]]
+function = "language-redirect"
+path = "/*"
