@@ -59,11 +59,7 @@ export default async (request: Request, context: Context) => {
         if (languageChoice) {
             return redirect(url, languageCookie(languageChoice, "tokiidea.si"));
         }
-        if (isSlovenianPath) {
-            url.pathname = englishPath;
-            return redirect(url);
-        }
-
+        if (isSlovenianPath) return context.next();
         url.pathname = `/sl${englishPath}`;
         return url;
     }
