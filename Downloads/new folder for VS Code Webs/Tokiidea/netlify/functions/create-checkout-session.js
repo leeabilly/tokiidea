@@ -1,6 +1,6 @@
 const allowedOrigins = new Set(
   (process.env.CHECKOUT_ALLOWED_ORIGINS ||
-    'https://tokiidea.com,https://www.tokiidea.com,https://leeabilly.github.io')
+    'https://tokiidea.com,https://www.tokiidea.com,https://tokiidea.si,https://www.tokiidea.si,https://leeabilly.github.io')
     .split(',')
     .map((origin) => origin.trim())
     .filter(Boolean)
@@ -87,8 +87,8 @@ exports.handler = async (event) => {
   try {
     const form = new URLSearchParams({
       mode: 'payment',
-      'success_url': 'https://tokiidea.com/success.html?session_id={CHECKOUT_SESSION_ID}',
-      'cancel_url': 'https://tokiidea.com/cart.html',
+      'success_url': `${origin}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+      'cancel_url': `${origin}/cart.html`,
       'shipping_address_collection[allowed_countries][0]': 'SI',
       'shipping_options[0][shipping_rate]': shippingRateId,
     });

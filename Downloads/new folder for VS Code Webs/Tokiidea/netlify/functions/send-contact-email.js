@@ -1,6 +1,6 @@
 const allowedOrigins = new Set(
   (process.env.CONTACT_ALLOWED_ORIGINS ||
-    'https://tokiidea.com,https://www.tokiidea.com,https://leeabilly.github.io')
+    'https://tokiidea.com,https://www.tokiidea.com,https://tokiidea.si,https://www.tokiidea.si,https://leeabilly.github.io')
     .split(',')
     .map((origin) => origin.trim())
     .filter(Boolean)
