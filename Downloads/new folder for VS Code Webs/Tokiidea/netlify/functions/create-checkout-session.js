@@ -46,8 +46,8 @@ exports.handler = async (event) => {
   ]);
   const shippingRateId = process.env.STRIPE_SHIPPING_RATE_ID;
 
-  if (!secretKey || !/^sk_(test|live)_/.test(secretKey)) {
-    console.error('Stripe checkout is unavailable: a valid Stripe secret key is not configured.');
+  if (!secretKey || !/^(sk|rk)_(test|live)_/.test(secretKey)) {
+    console.error('Stripe checkout is unavailable: a valid Stripe API key is not configured.');
     return jsonResponse(500, { error: 'Checkout is not configured. Please try again later.' }, origin);
   }
 
