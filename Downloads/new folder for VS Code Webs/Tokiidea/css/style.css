@@ -262,8 +262,8 @@ header {
 .cart-flight-bubble {
   position: fixed;
   z-index: 1000;
-  width: 12px;
-  height: 12px;
+  width: 22px;
+  height: 22px;
   border: 1px solid rgba(107, 79, 107, 0.24);
   border-radius: 50%;
   background: radial-gradient(circle at 32% 28%, #fffdf7 0 12%, #cff0dc 45%, #a8ddc0 100%);

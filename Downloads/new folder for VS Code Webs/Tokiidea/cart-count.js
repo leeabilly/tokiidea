@@ -23,25 +23,34 @@ window.animateCartFeedback = (trigger) => {
   const startY = triggerBounds.top + triggerBounds.height / 2;
   const deltaX = basketBounds.left + basketBounds.width / 2 - startX;
   const deltaY = basketBounds.top + basketBounds.height / 2 - startY;
+  const distance = Math.hypot(deltaX, deltaY);
+  const perpendicularX = distance ? -deltaY / distance : 0;
+  const perpendicularY = distance ? deltaX / distance : 0;
   const bubble = document.createElement('span');
 
   bubble.className = 'cart-flight-bubble';
   bubble.setAttribute('aria-hidden', 'true');
-  bubble.style.left = `${startX - 6}px`;
-  bubble.style.top = `${startY - 6}px`;
+  bubble.style.left = `${startX - 11}px`;
+  bubble.style.top = `${startY - 11}px`;
   document.body.append(bubble);
 
-  const animation = bubble.animate([
-    { opacity: 0, transform: 'translate(0, 0) scale(0.55)' },
-    {
-      opacity: 0.8,
-      transform: `translate(${deltaX * 0.48}px, ${deltaY * 0.48 - 18}px) scale(0.9)`,
-      offset: 0.55
-    },
-    { opacity: 0.95, transform: `translate(${deltaX}px, ${deltaY}px) scale(0.35)` }
-  ], {
-    duration: 1050,
-    easing: 'cubic-bezier(0.22, 0.68, 0.28, 1)',
+  const flightKeyframes = Array.from({ length: 17 }, (_, index) => {
+    const progress = index / 16;
+    const sway = Math.sin(progress * Math.PI * 4) * 24;
+    const lift = -10 * Math.sin(progress * Math.PI);
+    const x = deltaX * progress + perpendicularX * sway;
+    const y = deltaY * progress + perpendicularY * sway + lift;
+
+    return {
+      opacity: progress === 0 ? 0 : 0.86,
+      transform: `translate(${x}px, ${y}px) scale(${progress === 0 ? 0.65 : 1})`,
+      offset: progress
+    };
+  });
+
+  const animation = bubble.animate(flightKeyframes, {
+    duration: 3600,
+    easing: 'cubic-bezier(0.42, 0, 0.3, 1)',
     fill: 'forwards'
   });
 
