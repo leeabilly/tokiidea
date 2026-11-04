@@ -131,13 +131,19 @@ p {
 }
 
 a {
-  color: var(--accent-rose);
+  color: #6B4F6B;
   text-decoration: none;
   transition: color 220ms ease, opacity 220ms ease;
 }
 
 a:hover {
+  color: #403843;
   text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid #55405E;
+  outline-offset: 3px;
 }
 
 /* Layout Containers */
