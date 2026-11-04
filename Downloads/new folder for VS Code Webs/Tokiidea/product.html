@@ -230,7 +230,7 @@
             }
             saveCart(cart);
             updateCartCount();
-            window.animateCartFeedback();
+            window.animateCartFeedback(document.querySelector('.product-add-button'));
         }
 
         function getCartCount() {

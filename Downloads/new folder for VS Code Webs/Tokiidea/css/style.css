@@ -186,7 +186,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  position: relative; /* Added for cart count positioning */
 }
 
 .nav-container {
@@ -258,6 +257,19 @@ header {
   display: block;
   width: 28px;
   height: 28px;
+}
+
+.cart-flight-bubble {
+  position: fixed;
+  z-index: 1000;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(107, 79, 107, 0.24);
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #fffdf7 0 12%, #cff0dc 45%, #a8ddc0 100%);
+  box-shadow: 0 1px 5px rgba(66, 66, 66, 0.16);
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .cart-basket.cart-added svg {
