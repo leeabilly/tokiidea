@@ -46,17 +46,30 @@ window.animateCartFeedback = (trigger) => {
   });
 
   animation.onfinish = () => {
-    bubble.remove();
-    cartBasket.classList.remove('cart-added');
-    cartCount.classList.remove('cart-count-added');
-    void cartIcon.offsetWidth;
-    cartBasket.classList.add('cart-added');
-    cartCount.classList.add('cart-count-added');
+    const pop = bubble.animate([
+      { opacity: 0.95, transform: `translate(${deltaX}px, ${deltaY}px) scale(0.35)` },
+      { opacity: 0, transform: `translate(${deltaX}px, ${deltaY}px) scale(1.65)` }
+    ], {
+      duration: 200,
+      easing: 'ease-out',
+      fill: 'forwards'
+    });
 
-    cartFeedbackTimeout = window.setTimeout(() => {
+    pop.onfinish = () => {
+      bubble.remove();
       cartBasket.classList.remove('cart-added');
       cartCount.classList.remove('cart-count-added');
-    }, 500);
+      void cartIcon.offsetWidth;
+      cartBasket.classList.add('cart-added');
+      cartCount.classList.add('cart-count-added');
+
+      cartFeedbackTimeout = window.setTimeout(() => {
+        cartBasket.classList.remove('cart-added');
+        cartCount.classList.remove('cart-count-added');
+      }, 500);
+    };
+
+    pop.oncancel = () => bubble.remove();
   };
 
   animation.oncancel = () => bubble.remove();
