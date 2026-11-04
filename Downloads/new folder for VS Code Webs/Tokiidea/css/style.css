@@ -260,6 +260,27 @@ header {
   height: 28px;
 }
 
+.cart-basket.cart-added svg {
+  animation: cart-added-pop 450ms ease-out;
+}
+
+.cart-count.cart-count-added {
+  animation: cart-count-pop 450ms ease-out;
+}
+
+@keyframes cart-added-pop {
+  45% {
+    transform: scale(1.12) rotate(-5deg);
+  }
+}
+
+@keyframes cart-count-pop {
+  45% {
+    background: #cff0dc;
+    transform: scale(1.2);
+  }
+}
+
 /* Homepage aquarium banner */
 .image-slider {
   overflow: hidden;
@@ -922,7 +943,9 @@ footer {
   .product-transition-enter,
   .product-details,
   .making-steps li,
-  .image-slider img {
+  .image-slider img,
+  .cart-basket.cart-added svg,
+  .cart-count.cart-count-added {
     animation: none;
     transition: none;
   }

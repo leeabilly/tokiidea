@@ -230,6 +230,7 @@
             }
             saveCart(cart);
             updateCartCount();
+            window.animateCartFeedback();
         }
 
         function getCartCount() {
@@ -240,17 +241,7 @@
             const count = getCartCount();
             const cartCountEl = document.querySelector('.cart-count');
             if (cartCountEl) {
-                // Smooth animation: fade out and scale down, then back
-                cartCountEl.classList.add('update');
-                // Update count after a short delay to allow animation to start
-                setTimeout(() => {
-                    cartCountEl.textContent = count;
-                }, 50);
-                // Remove update class after animation ends
-                setTimeout(() => {
-                    cartCountEl.classList.remove('update');
-                }, 300);
-                // Hide if zero
+                cartCountEl.textContent = count;
                 if (count === 0) {
                     cartCountEl.style.display = 'none';
                 } else {
@@ -283,7 +274,7 @@
             updateCartCount();
         });
     </script>
-    <script src="../cart-count.js?v=2"></script>
+    <script src="../cart-count.js?v=3"></script>
     <script src="../page-transition.js"></script>
     <script src="../cookie-notice.js?v=2"></script>
     <script src="../bubble-cursor.js"></script>

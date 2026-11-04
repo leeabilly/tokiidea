@@ -5,6 +5,29 @@ window.addEventListener('storage', (event) => {
   }
 });
 
+let cartFeedbackTimeout;
+
+window.animateCartFeedback = () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const cartBasket = document.querySelector('.cart-basket');
+  const cartCount = document.querySelector('.cart-count');
+  const cartIcon = cartBasket?.querySelector('svg');
+  if (!cartBasket || !cartCount || !cartIcon) return;
+
+  cartBasket.classList.remove('cart-added');
+  cartCount.classList.remove('cart-count-added');
+  void cartIcon.offsetWidth;
+  cartBasket.classList.add('cart-added');
+  cartCount.classList.add('cart-count-added');
+
+  window.clearTimeout(cartFeedbackTimeout);
+  cartFeedbackTimeout = window.setTimeout(() => {
+    cartBasket.classList.remove('cart-added');
+    cartCount.classList.remove('cart-count-added');
+  }, 500);
+};
+
 function updateCartCount() {
   const cartCount = document.querySelector('.cart-count');
   const cartBasket = document.querySelector('.cart-basket');
